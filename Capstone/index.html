@@ -20,12 +20,21 @@
         <ul>
             <li v-for="detail in details">{{detail}}</li>
         </ul>
-
-        <div v-for="variant in variants" v-bind:key="variant.variantId">
-            <p v-on:mouseover="updateProduct(variant.variantImage)">{{variant.variantColor}}</p>
+        
+        <div id="color-selector">
+            <div v-for="variant in variants" 
+            v-bind:key="variant.variantId"
+            v-bind:style="{backgroundColor:variant.variantColor}"
+            class="color-box"
+            v-on:mouseover="updateProduct(variant.variantImage)">
+            </div>
         </div>
+       
 
-        <button v-on:click="addToCart">Add To Cart</button>
+        <button v-on:click="addToCart" 
+                v-bind:disabled="!inStock"
+                v-bind:class="{disabledButton:!inStock}">
+                Add To Cart</button>
         <div>
             <p>Cart({{cart}})</p>
         </div>

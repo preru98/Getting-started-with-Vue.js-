@@ -3,3 +3,19 @@
     width: 200px;
     border: 2px solid black;
 }
+.color-box{
+    height: 20px;
+    width: 20px;
+    margin-top:20px;
+    margin-left:20px;
+    margin-right:20px;
+    margin-bottom:20px;
+}
+.disabledButton{
+    background-color:#808080;
+}
+
+button{
+    color: black;
+    background-color: blue;
+}
