@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+    
+    <div id=stock v-bind:title="inventory" >
+        <p v-if="inventory > 100 ">It is enough! Don't buy for few days please</p>
+        <p v-else-if="inventory <= 100 && inventory >10">Get some urgently.</p>
+        <p v-else="inventory <= 10">Forget it we are dead :-</p>
+
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="main.js"></script>
+</body>
+</html>

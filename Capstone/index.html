@@ -7,12 +7,14 @@
 
     <div id="app">
 
-        <div >
+        <div>
             <img class ="product-image" v-bind:src="image" />
         </div>
 
         <div class ="product-info">
             <h3>{{product}}</h3>
+            <h4 v-if="inStock">In Stock</h4>
+            <h4 v-else="inStock">Out of Stock</h4>
         </div>
         
     </div>
