@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home Page</title>
+</head>
+<body>
+
+    <div id="title">
+        <h3>Hi There <span>{{ name }}</span></h3>
+    </div>
+
+    <div id="time">
+            <span v-bind:title="message">
+                Hover to see date
+            </span>
+    </div>
+    
+
+    <script src="https://unpkg.com/vue"></script>
+    <script src="main.js"></script>
+
+</body>
+</html>
