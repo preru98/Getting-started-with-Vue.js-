@@ -16,6 +16,14 @@
             <h4 v-if="inStock">In Stock</h4>
             <h4 v-else="inStock">Out of Stock</h4>
         </div>
+
+        <ul>
+            <li v-for="detail in details">{{detail}}</li>
+        </ul>
+
+        <div v-for="variant in variants" v-bind:key="variant.variantId">
+            <p>{{variant.variantColor}}</p>
+        </div>
         
     </div>
 

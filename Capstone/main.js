@@ -3,6 +3,17 @@ var app=new Vue({
     data:{
         product:"Umbrella",
         image:"purple.jpg",
-        inStock:true
+        inStock:true,
+        details:["A1 Fabric","Gender Neutral", "Long Lasting"],
+        variants:[
+            {
+                variantColor :"purple",
+                variantId:234
+            },
+            {
+                variantColor :"yellow",
+                variantId:259
+            }
+        ]
     }
 })
