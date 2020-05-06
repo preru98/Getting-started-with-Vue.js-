@@ -1,16 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home Page</title>
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
 
     <div id="app">
-        <h1>{{product}}</h1>
+
+        <div >
+            <img class ="product-image" v-bind:src="image" />
+        </div>
+
+        <div class ="product-info">
+            <h3>{{product}}</h3>
+        </div>
+        
     </div>
+
     <script src="https://unpkg.com/vue"></script>
     <script src="main.js"></script>
     
