@@ -12,7 +12,7 @@
         </div>
 
         <div class ="product-info">
-            <h3>{{product}}</h3>
+            <h3>{{title}}</h3>
             <h4 v-if="inStock">In Stock</h4>
             <h4 v-else="inStock">Out of Stock</h4>
         </div>
@@ -22,11 +22,11 @@
         </ul>
         
         <div id="color-selector">
-            <div v-for="variant in variants" 
+            <div v-for="(variant,index) in variants" 
             v-bind:key="variant.variantId"
             v-bind:style="{backgroundColor:variant.variantColor}"
             class="color-box"
-            v-on:mouseover="updateProduct(variant.variantImage)">
+            v-on:mouseover="updateProduct(index)">
             </div>
         </div>
        
