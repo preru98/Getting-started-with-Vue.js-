@@ -42,5 +42,4 @@ var app=new Vue({
             return this.variants[this.selectedVariant].variantQuantity
         },
     }
-
 })
