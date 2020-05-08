@@ -5,8 +5,7 @@ Vue.component('product',{
             required:true
         }
     },
-    template:`
-    <div class ="product">
+    template:`<div class ="product">
         <div>
             <img class ="product-image" v-bind:src="image" />
         </div>
@@ -17,19 +16,19 @@ Vue.component('product',{
             <h4 v-else="inStock">Out of Stock</h4>
             <p>User is premium account holder : {{premium}}</p>
             <p>Shipping : {{shipping}}</p>
-
         </div>
     
         <ul>
-            <li v-for="detail in details">{{detail}}</li>
+            <li v-for="(detail,index) in details" v-bind:key="index">{{detail}}</li>
         </ul>
         
         <div id="color-selector">
-            <div v-for="(variant,index) in variants" 
-            v-bind:key="variant.variantId"
-            v-bind:style="{backgroundColor:variant.variantColor}"
-            class="color-box"
-            v-on:mouseover="updateProduct(index)">
+            <div v-for="(variant,index) in variants " 
+                v-bind:key="variant.variantId"
+                v-bind:style="{backgroundColor:variant.variantColor}"
+                class="color-box"
+                v-on:mouseover="updateProduct(index)">
+            </div>
         </div>
     
         <button v-on:click="addToCart" 
@@ -37,10 +36,6 @@ Vue.component('product',{
                 v-bind:class="{disabledButton:!inStock}">
                 Add To Cart
         </button>
-    
-        <div>
-            <p>Cart({{cart}})</p>
-        </div>
     </div>`,
     data:function(){
         return{
@@ -62,14 +57,19 @@ Vue.component('product',{
                     variantId:259,
                     variantImage:"yellow.png",
                     variantQuantity:0
+                },
+                {
+                    variantColor :"black",
+                    variantId:29,
+                    variantImage:"black.jpeg",
+                    variantQuantity:0
                 }
-            ],
-            cart:0
+            ]
         }  
     },
     methods:{
         addToCart:function(){
-            this.cart+=1
+            this.$emit('add-to-cart')
         },
         updateProduct: function(index){
             this.selectedVariant=index
@@ -99,6 +99,12 @@ Vue.component('product',{
 var app=new Vue({
     el:'#app',
     data:{
-        premium:true
+        premium:true,
+        cart:0
+    },
+    methods:{
+        updateCart:function(){
+            this.cart+=1
+        }
     }
 })

@@ -6,7 +6,11 @@
 <body>
 
     <div id="app">
-        <product v-bind:premium="premium"></product>
+        <div>
+            <p>Cart({{cart}})</p>
+        </div>
+        <product v-bind:premium="premium" v-on:add-to-cart="updateCart"></product>
+        <product v-bind:premium="premium" v-on:add-to-cart="updateCart"></product>
     </div>
 
     <script src="https://unpkg.com/vue"></script>
