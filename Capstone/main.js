@@ -1,3 +1,37 @@
+Vue.component('review', {
+    template: `
+    <form class="review-form" v-on:submit.prevent="onSubmit">
+      <p>
+        <label for="name">Name:</label>
+        <input id="name" v-model="name" placeholder="name">
+      </p>
+      
+      <p>
+        <label for="review">Review:</label>      
+        <textarea id="review" v-model="review"></textarea>
+      </p>
+      <input type="submit">
+    </form>
+      
+    `,
+    data() {
+      return {
+        name: null,
+        review:null
+      }
+    },
+    methods:{
+        onSubmit:function(){
+            let productReview={
+                name:this.name,
+                review:this.review
+            }
+            this.$emit('review-submitted',productReview)
+            this.name=null,
+            this.review=null
+        }
+    }
+  })
 Vue.component('product',{
     props:{
         premium:{
@@ -36,6 +70,19 @@ Vue.component('product',{
                 v-bind:class="{disabledButton:!inStock}">
                 Add To Cart
         </button>
+
+        <div>
+            <h2>Reviews</h2>
+            <p v-if="!reviews.length">There are no reviews yet.</p>
+            <ul>
+                <li v-for="review in reviews">
+                    <p>{{ review.name }}</p>
+                    <p>{{ review.review }}</p>
+                </li>
+            </ul>
+       </div>
+
+        <review v-on:review-submitted="addReview"></review>
     </div>`,
     data:function(){
         return{
@@ -64,7 +111,8 @@ Vue.component('product',{
                     variantImage:"black.jpeg",
                     variantQuantity:0
                 }
-            ]
+            ],
+            reviews:[]
         }  
     },
     methods:{
@@ -73,7 +121,10 @@ Vue.component('product',{
         },
         updateProduct: function(index){
             this.selectedVariant=index
-        }  
+        },
+        addReview:function(productReview){
+            this.reviews.push(productReview)
+        }
     },
     computed:{
         title:function(){
