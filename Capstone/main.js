@@ -56,7 +56,7 @@ Vue.component('product',{
                     variantColor :"yellow",
                     variantId:259,
                     variantImage:"yellow.png",
-                    variantQuantity:0
+                    variantQuantity:10
                 },
                 {
                     variantColor :"black",
@@ -69,7 +69,7 @@ Vue.component('product',{
     },
     methods:{
         addToCart:function(){
-            this.$emit('add-to-cart')
+            this.$emit('add-to-cart',this.variants[this.selectedVariant].variantId)
         },
         updateProduct: function(index){
             this.selectedVariant=index
@@ -100,11 +100,11 @@ var app=new Vue({
     el:'#app',
     data:{
         premium:true,
-        cart:0
+        cart:[]
     },
     methods:{
-        updateCart:function(){
-            this.cart+=1
+        updateCart:function(id){
+            this.cart.push(id)
         }
     }
 })
